@@ -1,4 +1,4 @@
-package ospedale.ospedale_core;
+package ospedale.project;
 
 /**
  * Hello world!
