@@ -1,5 +1,6 @@
 package ospedale.ospedale_core;
 
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -19,5 +20,7 @@ class RepartoMediciAccessorsTest {
 
        
         reparto.setDottori(dottori);
-        }
+    
+        assertSame(dottori, reparto.getDottori());
+    }
 }
