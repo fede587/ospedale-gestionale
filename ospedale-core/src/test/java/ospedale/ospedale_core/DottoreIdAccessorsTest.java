@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import ospedale.ospedale_core.entità.Dottore;
 
 class DottoreIdAccessorsTest {
-
 	
     @Test
     void getId_and_setId_coverBoth() {
