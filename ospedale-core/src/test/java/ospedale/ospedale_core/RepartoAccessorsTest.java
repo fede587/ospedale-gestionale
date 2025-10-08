@@ -12,15 +12,14 @@ import ospedale.ospedale_core.entità.Reparto;
 
 class RepartoMediciAccessorsTest {
 
-    @Test
-    void setMedici_and_getMedici_coverBoth() {
-        Reparto reparto = new Reparto();
-        Set<Dottore> dottori = new LinkedHashSet<>();
-        dottori.add(new Dottore());
+	@Test
+	void setMedici_and_getMedici_coverBoth() {
+		Reparto reparto = new Reparto();
+		Set<Dottore> dottori = new LinkedHashSet<>();
+		dottori.add(new Dottore());
 
-       
-        reparto.setDottori(dottori);
-    
-        assertSame(dottori, reparto.getDottori());
-    }
+		reparto.setDottori(dottori);
+
+		assertSame(dottori, reparto.getDottori());
+	}
 }

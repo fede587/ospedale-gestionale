@@ -1,5 +1,5 @@
 package ospedale.ospedale_core;
-	
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -10,17 +10,13 @@ class UtenteCtorAndPasswordNullTest {
 
 	@Test
 	void usernamePassword_getId_setPasswordNull() {
-		Cliente client = new Cliente("fede", "password"); 
-	    assertEquals("fede", client.getUsername());
-	    assertEquals("password", client.getPassword());
+		Cliente client = new Cliente("fede", "password");
+		assertEquals("fede", client.getUsername());
+		assertEquals("password", client.getPassword());
 
-	        
-	    assertNull(client.getId());
+		assertNull(client.getId());
 
-	      
-	    client.setPassword(null);
-	    assertNull(client.getPassword());
+		client.setPassword(null);
+		assertNull(client.getPassword());
 	}
 }
-
-

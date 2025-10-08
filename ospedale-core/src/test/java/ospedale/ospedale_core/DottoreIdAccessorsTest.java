@@ -11,9 +11,9 @@ class DottoreIdAccessorsTest {
 	
     @Test
     void getId_and_setId_coverBoth() {
-        Dottore d = new Dottore();
-        assertNull(d.getId());   
-        d.setId(42L);           
-        assertEquals(42L, d.getId());
+        Dottore dr = new Dottore();
+        assertNull(dr.getId());   
+        dr.setId(42L);           
+        assertEquals(42L, dr.getId());
     }
 }

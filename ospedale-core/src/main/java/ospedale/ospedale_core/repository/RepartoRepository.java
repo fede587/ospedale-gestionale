@@ -7,7 +7,7 @@ import ospedale.ospedale_core.entità.Reparto;
 import java.util.Optional;
 
 public interface RepartoRepository extends JpaRepository<Reparto, Long> {
-	
-    Optional<Reparto> findByNomeIgnoreCase(String nome);
-    
+
+	Optional<Reparto> findByNomeIgnoreCase(String nome);
+
 }
