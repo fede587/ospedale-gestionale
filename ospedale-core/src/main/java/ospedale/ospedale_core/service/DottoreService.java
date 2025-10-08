@@ -5,9 +5,12 @@ import java.util.Optional;
 import ospedale.ospedale_core.entità.Dottore;
 
 interface DottoreService {
-    List<Dottore> findAll();
-    Optional<Dottore> findById(Long id);
-    Dottore save(Dottore m);
-    void deleteById(Long id);
+	List<Dottore> findAll();
+
+	Optional<Dottore> findById(Long id);
+
+	Dottore save(Dottore dr);
+
+	void deleteById(Long id);
 
 }
