@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${title} ?: 'Ospedale'">Ospedale</title>
+</head>
+<body th:fragment="layout(content)">
+  <div class="container my-4">
+    <header class="mb-4">
+      <h1 class="h3 text-primary">Ospedale</h1>
+      <nav class="nav mb-2">
+        <a class="nav-link" th:href="@{/}">Index</a>
+      </nav>
+      <hr/>
+    </header>
+  </div>
+</body>
+</html>
