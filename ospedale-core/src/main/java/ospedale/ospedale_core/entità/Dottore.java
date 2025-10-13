@@ -1,5 +1,10 @@
 package ospedale.ospedale_core.entità;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "dottori")
 public class Dottore {
 	    private Long id;
 
