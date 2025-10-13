@@ -1,4 +1,4 @@
-package ospedale.ospedale_core;
+package ospedale.ospedale_core.EntityTests;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
