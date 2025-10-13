@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import ospedale.ospedale_core.entità.Dottore;
 
-interface DottoreService {
+public interface DottoreService {
 	List<Dottore> findAll();
 
 	Optional<Dottore> findById(Long id);
@@ -13,4 +13,5 @@ interface DottoreService {
 
 	void deleteById(Long id);
 
+    List<Dottore> findByReparto(Long repartoId);
 }
