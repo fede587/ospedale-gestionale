@@ -18,18 +18,21 @@ class DottoreEntityTest {
         dr1.setCognome("Rossi");
         dr1.setEmail("mario.rossi@example.com");
         dr1.setTelefono("0123");
+        dr1.setSpecializzazione("Cardiologia");
 
         Dottore dr2 = new Dottore();
         dr2.setNome("Mario");
         dr2.setCognome("Rossi");
         dr2.setEmail("mario.rossi@example.com");
         dr2.setTelefono("0123");
+        dr2.setSpecializzazione("Cardiologia");
 
      
         assertEquals("Mario", dr2.getNome());
         assertEquals("Rossi", dr2.getCognome());
         assertEquals("mario.rossi@example.com", dr2.getEmail());
         assertEquals("0123", dr2.getTelefono());
+        assertEquals("Cardiologia", dr2.getSpecializzazione());
 
   
         assertTrue(dr1.equals(dr1));
