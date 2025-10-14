@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it"
+      th:replace="~{layout :: layout(~{::content})}">
+<body><div th:fragment="content" class="container mt-5">
+  <h2>Errore 404: Pagina non trovata</h2>
+  <a class="btn btn-secondary" th:href="@{/}">Indietro</a>
+</div></body>
+</html>
