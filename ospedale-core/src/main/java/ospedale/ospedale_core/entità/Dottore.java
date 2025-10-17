@@ -1,20 +1,22 @@
 package ospedale.ospedale_core.entità;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
-@Entity
-@Table(name = "dottori")
 public class Dottore {
+
 	private Long id;
-
+	@NotBlank
 	private String nome;
+	@NotBlank
 	private String cognome;
+	@Email
 	private String email;
+	@Pattern(regexp = "^[0-9 +()\\-]*$", message = "Telefono non valido")
 	private String telefono;
-	private String specializzazione;
 
-	private Reparto reparto;
+	private String competenza;
 
 	public Dottore() {
 	}
@@ -60,19 +62,11 @@ public class Dottore {
 	}
 
 	public String getSpecializzazione() {
-		return specializzazione;
+		return competenza;
 	}
 
-	public void setSpecializzazione(String specializzazione) {
-		this.specializzazione = specializzazione;
-	}
-
-	public Reparto getReparto() {
-		return reparto;
-	}
-
-	public void setReparto(Reparto reparto) {
-		this.reparto = reparto;
+	public void setSpecializzazione(String competenza) {
+		this.competenza = competenza;
 	}
 
 }
