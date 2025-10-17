@@ -10,17 +10,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ospedale.ospedale_core.entità.Dottore;
 import ospedale.ospedale_core.entità.Reparto;
 import ospedale.ospedale_core.repository.DottoreRepository;
-import ospedale_core.service.impl.DottoreServiceImpl;
+import ospedale.ospedale_core.service.DottoreService;
 
 import static org.mockito.Mockito.verify;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ExtendWith(MockitoExtension.class)
-class DottoreServiceImplTest {
+class DottoreServiceTest {
 
     @Mock DottoreRepository dottoreRepository;
-    @InjectMocks DottoreServiceImpl service;
+    @InjectMocks DottoreService service;
 
     @Test
     void save_chiama_repository_e_preserva_reparto() {
