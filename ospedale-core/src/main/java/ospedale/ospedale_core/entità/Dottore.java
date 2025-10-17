@@ -18,6 +18,8 @@ public class Dottore {
 
 	private String competenza;
 
+	private Reparto reparto;
+
 	public Dottore() {
 	}
 
@@ -69,4 +71,11 @@ public class Dottore {
 		this.competenza = competenza;
 	}
 
+	public Reparto getReparto() {
+		return reparto;
+	}
+
+	public void setReparto(Reparto reparto) {
+		this.reparto = reparto;
+	}
 }
