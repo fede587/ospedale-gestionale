@@ -2,9 +2,12 @@ package ospdale_core.ServiceImplTests;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -17,6 +20,9 @@ class dottoreServiceImplTest {
     @Mock DottoreRepository dottoreRepository;
 
     @InjectMocks DottoreServiceImpl service;
+    @BeforeEach
+    void init() { MockitoAnnotations.openMocks(this); }
+
 
     @Test
     void findAll_delegatesToRepo() {
