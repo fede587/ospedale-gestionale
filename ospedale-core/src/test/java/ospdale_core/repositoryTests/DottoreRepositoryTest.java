@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import ospedale.ospedale_core.repository.*;
 import ospedale.ospedale_core.entità.Dottore;
@@ -12,8 +13,8 @@ import ospedale.ospedale_core.entità.Reparto;
 
 public class DottoreRepositoryTest {
 
-	RepartoRepository repartoRepo;
-	DottoreRepository dottoreRepo;
+	@Autowired RepartoRepository repartoRepo;
+	@Autowired DottoreRepository dottoreRepo;
 
 	@Test
 	void salva_e_trova_per_reparto() {

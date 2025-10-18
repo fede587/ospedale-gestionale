@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ospedale.ospedale_core.entità.Dottore;
 import ospedale.ospedale_core.entità.Reparto;
 import ospedale.ospedale_core.repository.DottoreRepository;
-import ospedale.ospedale_core.service.DottoreService;
+import ospedale_core.service.impl.DottoreServiceImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class DottoreServiceTest {
 
     @Mock DottoreRepository dottoreRepository;
-    @InjectMocks DottoreService service;
+    @InjectMocks DottoreServiceImpl service;
 
     @Test
     void save_chiama_repository_e_preserva_reparto() {
@@ -33,6 +33,6 @@ class DottoreServiceTest {
 
         ArgumentCaptor<Dottore> cap = ArgumentCaptor.forClass(Dottore.class);
         verify(dottoreRepository).save(cap.capture());
-        assertThat(cap.getValue().getReparto().getId()).isEqualTo(0);
+        assertThat(cap.getValue().getReparto().getId()).isEqualTo(1L);
     }
 }

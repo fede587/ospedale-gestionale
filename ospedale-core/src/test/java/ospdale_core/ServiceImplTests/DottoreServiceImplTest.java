@@ -15,7 +15,7 @@ import ospedale.ospedale_core.entità.Dottore;
 import ospedale.ospedale_core.repository.DottoreRepository;
 import ospedale_core.service.impl.DottoreServiceImpl;
 
-class dottoreServiceImplTest {
+class DottoreServiceImplTest {
 
     @Mock DottoreRepository dottoreRepository;
 
