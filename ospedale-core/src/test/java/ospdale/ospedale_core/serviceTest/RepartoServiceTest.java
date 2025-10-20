@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import ospedale.ospedale_core.entità.Reparto;
 import ospedale.ospedale_core.repository.RepartoRepository;
-import ospedale.ospedale_core.service.RepartoService;
+import ospedale_core.service.impl.RepartoServiceImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 class RepartoServiceTest {
 
     @Mock RepartoRepository repo;
-    @InjectMocks RepartoService service;
+    @InjectMocks RepartoServiceImpl service;
 
     @Test
     void save_callsRepository() {
