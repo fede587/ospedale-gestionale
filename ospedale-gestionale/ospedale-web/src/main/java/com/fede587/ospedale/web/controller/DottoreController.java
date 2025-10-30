@@ -30,10 +30,10 @@ public class DottoreController {
     public String nuovo(Model model) {
         model.addAttribute("dottore", new Dottore());
         model.addAttribute("reparti", repartoService.findAll());
-        return "medici/form";
+        return "/dottoriForm";
     }
 
-    @PostMapping("/dottori")
+    @PostMapping("/dottoriForm")
     public String crea(@ModelAttribute Dottore dottore,
                        @RequestParam(name = "repartoId", required = false) Long repartoId,
                        Model model,
@@ -42,19 +42,19 @@ public class DottoreController {
         if (repartoId == null) {
             model.addAttribute("error", "Seleziona un reparto");
             model.addAttribute("reparti", repartoService.findAll());
-            return "dottori/form";
+            return "/dottoriForm";
         }
 
         Optional<Reparto> repartoOpt = repartoService.findById(repartoId);
         if (repartoOpt.isEmpty()) {
             model.addAttribute("error", "Reparto non valido");
             model.addAttribute("reparti", repartoService.findAll());
-            return "medici/form";
+            return "/dottoriForm";
         }
 
         dottore.setReparto(repartoOpt.get());
         dottoreService.save(dottore);
         ra.addFlashAttribute("success", "Dottore creato con successo");
-        return "redirect:/medici";
+        return "redirect:/dottoriForm";
     }
 }
