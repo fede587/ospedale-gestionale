@@ -9,6 +9,8 @@ public class Cliente {
 	private String username;
 	private String password;
 
+    private boolean abilitato = true;
+
 	private Set<Ruolo> ruoli = new LinkedHashSet<>();
 
 	public Cliente() {}
@@ -21,4 +23,7 @@ public class Cliente {
 	public void setPassword(String password){ this.password = password; }
 	public Set<Ruolo> getRuoli(){ return ruoli; }
 	public void setRuoli(Set<Ruolo> ruoli){ this.ruoli = ruoli; }
+    public boolean isAbilitato(){ return abilitato; }
+    public void setAbilitato(boolean abilitato){ this.abilitato = abilitato; }
+
 }
