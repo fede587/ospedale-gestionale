@@ -12,7 +12,8 @@ import com.fede587.ospedale.web.service.ClienteService;
 public class AuthController {
 
   private record RegForm(@NotBlank String username, @NotBlank String password, boolean admin) {}
-  public AuthController(ClienteService clienti){ }
+  private final ClienteService clienti;
+  public AuthController(ClienteService clienti){ this.clienti = clienti; }
 
   @GetMapping("/login")
   public String login(){ return "login"; }
@@ -23,4 +24,9 @@ public class AuthController {
     return "7registrazione";
   }
 
+  @PostMapping("/registrazione")
+  public String register(@ModelAttribute("user") RegForm rf){
+    clienti.registra(rf.username(), rf.password(), rf.admin());
+    return "redirect:/login?registered";
+  }
 }
