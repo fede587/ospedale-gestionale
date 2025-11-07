@@ -17,24 +17,38 @@ import com.fede587.ospedale.core.repository.RuoloRepository;
 
 class ClienteServiceTest {
 
-    @Mock ClienteRepository clienteRepo;
-    @Mock RuoloRepository ruoloRepo;
-    @Mock PasswordEncoder passwordEncoder;
+	@Mock
+	ClienteRepository clienteRepo;
+	@Mock
+	RuoloRepository ruoloRepo;
+	@Mock
+	PasswordEncoder passwordEncoder;
 
-    @InjectMocks ClienteService clienteService;
+	@InjectMocks
+	ClienteService clienteService;
 
-    @BeforeEach
-    void init() {
-        MockitoAnnotations.openMocks(this);
-    }
+	@BeforeEach
+	void init() {
+		MockitoAnnotations.openMocks(this);
+	}
 
-    @Test
-    void registra_admin_ok() {
-        when(passwordEncoder.encode(anyString())).thenReturn("ENC");
+	@Test
+	void registra_utente_ok() {
+		when(passwordEncoder.encode(anyString())).thenReturn("ENC");
 
-        clienteService.registra("admin2", "StrongPass1!", true);
+		clienteService.registra("federico", "Passw0rd!", false);
 
-        verify(passwordEncoder).encode("StrongPass1!");
-        verify(clienteRepo).save(any());
-    }
+		verify(passwordEncoder).encode("Passw0rd!");
+		verify(clienteRepo).save(any());
+	}
+
+	@Test
+	void registra_admin_ok() {
+		when(passwordEncoder.encode(anyString())).thenReturn("ENC");
+
+		clienteService.registra("admin2", "StrongPass1!", true);
+
+		verify(passwordEncoder).encode("StrongPass1!");
+		verify(clienteRepo).save(any());
+	}
 }
