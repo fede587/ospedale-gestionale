@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -28,6 +29,7 @@ class DottoreControllerExtraTest {
 
     @BeforeEach
     void setup() {
+        MockitoAnnotations.openMocks(this);
         DottoreController controller = new DottoreController(dottoreService, repartoService);
         InternalResourceViewResolver vr = new InternalResourceViewResolver();
         vr.setPrefix("/templates/");
