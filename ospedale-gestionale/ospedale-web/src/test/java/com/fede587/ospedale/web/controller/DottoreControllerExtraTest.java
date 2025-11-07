@@ -2,9 +2,12 @@ package com.fede587.ospedale.web.controller;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.Optional;
 
@@ -35,6 +38,14 @@ class DottoreControllerExtraTest {
         vr.setPrefix("/templates/");
         vr.setSuffix(".html");
         mockMvc = MockMvcBuilders.standaloneSetup(controller).setViewResolvers(vr).build();
+    }
+
+    @Test
+    void getNuovo_form_ok() throws Exception {
+        mockMvc.perform(get("dottori/dottoriForm"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("dottori/dottoriForm"))
+            .andExpect(model().attributeExists("dottore"));
     }
 
     @Test
