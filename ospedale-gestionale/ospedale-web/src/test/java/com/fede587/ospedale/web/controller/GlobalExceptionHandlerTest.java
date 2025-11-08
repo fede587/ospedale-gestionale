@@ -16,4 +16,12 @@ class GlobalExceptionHandlerTest {
         assertEquals(404, r.getStatusCode().value());
         assertEquals("Not found", r.getBody());
     }
+
+    @Test
+    void handleIllegalState_returns400() {
+        GlobalExceptionHandler h = new GlobalExceptionHandler();
+        ResponseEntity<String> r = h.handleIllegalState(new IllegalStateException("bad"));
+        assertEquals(400, r.getStatusCode().value());
+        assertEquals("bad", r.getBody());
+    }
 }
