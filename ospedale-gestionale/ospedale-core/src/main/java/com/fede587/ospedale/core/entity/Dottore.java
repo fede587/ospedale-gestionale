@@ -1,8 +1,13 @@
 package com.fede587.ospedale.core.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+
+@Entity
+@Table(name = "dottori")
 
 public class Dottore {
 
@@ -17,6 +22,9 @@ public class Dottore {
 	private String telefono;
 
 	private String competenza;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "reparto_id")
 
 	private Reparto reparto;
 
