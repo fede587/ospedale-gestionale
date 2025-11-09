@@ -3,13 +3,31 @@ package com.fede587.ospedale.core.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotBlank;
+
+@Entity
+@Table(name="clienti", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
+
 public class Cliente {
 	
-	private Long id;
+	private Long id;   
+	@NotBlank
+    @Column(nullable=false, unique=true, length=100)
+
 	private String username;
+    @NotBlank
+    @Column(nullable=false, length=200)
+
 	private String password;
 
     private boolean abilitato = true;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="clienti_ruoli",
+        joinColumns = @JoinColumn(name="cliente_id"),
+        inverseJoinColumns = @JoinColumn(name="ruolo_id"))
 
 	private Set<Ruolo> ruoli = new LinkedHashSet<>();
 
