@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @EnableAutoConfiguration
 @Configuration
 @EntityScan(basePackages = "com.fede587.ospedale.core.entity")
+@EnableJpaRepositories(basePackages = "com.fede587.ospedale.core.repository")
 
 class RepartoRepositoryTest {
 
