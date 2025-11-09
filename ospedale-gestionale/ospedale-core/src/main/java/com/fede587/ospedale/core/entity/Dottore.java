@@ -21,7 +21,7 @@ public class Dottore {
 	@Pattern(regexp = "^[0-9 +()\\-]*$", message = "Telefono non valido")
 	private String telefono;
 
-	private String competenza;
+	private String specializzazione;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "reparto_id")
@@ -72,11 +72,11 @@ public class Dottore {
 	}
 
 	public String getSpecializzazione() {
-		return competenza;
+		return specializzazione;
 	}
 
 	public void setSpecializzazione(String competenza) {
-		this.competenza = competenza;
+		this.specializzazione = competenza;
 	}
 
 	public Reparto getReparto() {

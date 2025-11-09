@@ -1,6 +1,7 @@
 package com.fede587.ospedale.core.service;
 
 import com.fede587.ospedale.core.entity.Reparto;
+
 import com.fede587.ospedale.core.repository.RepartoRepository;
 import com.fede587.ospedale.core.service.impl.RepartoServiceImpl;
 
@@ -17,15 +18,17 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class RepartoServiceImplTest {
 
-    @Mock RepartoRepository repo;
-    @InjectMocks RepartoServiceImpl service;
+	@Mock
+	RepartoRepository repo;
+	@InjectMocks
+	RepartoServiceImpl service;
 
-    @Test
-    void save_callsRepository() {
-        Reparto r = new Reparto("Ortopedia", "Ossa");
-        service.save(r);
-        ArgumentCaptor<Reparto> cap = ArgumentCaptor.forClass(Reparto.class);
-        verify(repo).save(cap.capture());
-        assertThat(cap.getValue().getNome()).isEqualTo("Ortopedia");
-    }
+	@Test
+	void save_callsRepository() {
+		Reparto r = new Reparto("Ortopedia", "Ossa");
+		service.save(r);
+		ArgumentCaptor<Reparto> cap = ArgumentCaptor.forClass(Reparto.class);
+		verify(repo).save(cap.capture());
+		assertThat(cap.getValue().getNome()).isEqualTo("Ortopedia");
+	}
 }
