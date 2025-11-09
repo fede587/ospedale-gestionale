@@ -16,15 +16,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 
-@org.springframework.test.context.ContextConfiguration(classes = RepartoRepositoryTest.class)
-
-@SpringBootConfiguration
-@EnableAutoConfiguration
-@Configuration
-@EntityScan(basePackages = "com.fede587.ospedale.core.entity")
-@EnableJpaRepositories(basePackages = "com.fede587.ospedale.core.repository")
-
+@org.springframework.test.context.ContextConfiguration(classes = RepartoRepositoryTest.TestBootConfig.class)
 class RepartoRepositoryTest {
+	@SpringBootConfiguration
+	@EnableAutoConfiguration
+	@Configuration
+	@EntityScan(basePackages = "com.fede587.ospedale.core.entity")
+	@EnableJpaRepositories(basePackages = "com.fede587.ospedale.core.repository")
+
+	static class TestBootConfig {
+	}
 
 	@Autowired
 	RepartoRepository repo;
