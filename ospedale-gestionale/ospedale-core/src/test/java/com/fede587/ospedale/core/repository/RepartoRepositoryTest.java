@@ -1,7 +1,8 @@
-package com.fede587.ospedale.core;
+package com.fede587.ospedale.core.repository;
+
 
 import com.fede587.ospedale.core.entity.Reparto;
-import com.fede587.ospedale.core.repository.RepartoRepository;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
