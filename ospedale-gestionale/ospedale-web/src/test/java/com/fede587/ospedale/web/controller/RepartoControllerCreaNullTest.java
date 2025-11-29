@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.fede587.ospedale.core.service.RepartoService;
 
-class RepartoControllerCreaNullTest {
+class RepartoControllerExtraTest_addNullCase {
 
     @Mock
     RepartoService repartoService;
@@ -30,14 +30,12 @@ class RepartoControllerCreaNullTest {
         InternalResourceViewResolver vr = new InternalResourceViewResolver();
         vr.setPrefix("/templates/");
         vr.setSuffix(".html");
-        mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .setViewResolvers(vr)
-                .build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).setViewResolvers(vr).build();
     }
 
     @Test
-    @DisplayName("POST /reparti senza 'nome' -> ramo nome == null")
-    void crea_nomeNull_rientraInValidazione() throws Exception {
+    @DisplayName("POST /reparti -> 200 + form su validazione KO (nome == null)")
+    void crea_validazione_nomeNull() throws Exception {
         
         mockMvc.perform(post("/reparti"))
             .andExpect(status().isOk())
