@@ -11,6 +11,9 @@ import jakarta.validation.constraints.Pattern;
 
 public class Dottore {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
 	private String nome;

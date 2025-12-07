@@ -13,12 +13,15 @@ import jakarta.validation.constraints.NotBlank;
 
 public class Cliente {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;   
+	
 	@NotBlank
     @Column(nullable=false, unique=true, length=100)
-
 	private String username;
-    @NotBlank
+
+	@NotBlank
     @Column(nullable=false, length=200)
 
 	private String password;
