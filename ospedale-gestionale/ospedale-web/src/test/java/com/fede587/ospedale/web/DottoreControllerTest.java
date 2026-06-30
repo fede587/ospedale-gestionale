@@ -41,7 +41,7 @@ class DottoreControllerTest {
   @Test
   void mostraFormNuovo() throws Exception {
     when(repartoService.findAll()).thenReturn(List.of(new Reparto("Cardiologia","Cuore")));
-    mockMvc.perform(get("/medici/nuovo"))
+    mockMvc.perform(get("/dottori/nuovo"))
            .andExpect(status().isOk());
            
   }
@@ -52,7 +52,7 @@ class DottoreControllerTest {
     when(repartoService.findById(1L)).thenReturn(Optional.of(r));
     when(dottoreService.save(Mockito.any())).thenAnswer(inv -> inv.getArgument(0));
 
-    mockMvc.perform(post("/medici")
+    mockMvc.perform(post("/dottori")
         .param("nome","Mario")
         .param("cognome","Rossi")
         .param("email","mario.rossi@example.com")
