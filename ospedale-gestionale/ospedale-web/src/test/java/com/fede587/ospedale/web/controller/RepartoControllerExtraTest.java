@@ -44,14 +44,14 @@ class RepartoControllerExtraTest {
 	@Test
 	@DisplayName("GET /reparti -> lista")
 	void lista_ok() throws Exception {
-		mockMvc.perform(get("/reparti")).andExpect(status().isOk()).andExpect(view().name("reparti/repartiList"))
+		mockMvc.perform(get("/reparti")).andExpect(status().isOk()).andExpect(view().name("reparti/lista"))
 				.andExpect(model().attributeExists("reparti"));
 	}
 
 	@Test
 	@DisplayName("GET /reparti/nuovo -> mostra form")
 	void nuovo_form_ok() throws Exception {
-		mockMvc.perform(get("/reparti/nuovo")).andExpect(status().isOk()).andExpect(view().name("reparti/repartiForm"))
+		mockMvc.perform(get("/reparti/nuovo")).andExpect(status().isOk()).andExpect(view().name("reparti/form"))
 				.andExpect(model().attributeExists("reparto"));
 	}
 

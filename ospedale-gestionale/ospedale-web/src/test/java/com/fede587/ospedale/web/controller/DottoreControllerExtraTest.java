@@ -42,9 +42,9 @@ class DottoreControllerExtraTest {
 
     @Test
     void getNuovo_form_ok() throws Exception {
-        mockMvc.perform(get("dottori/dottoriForm"))
+        mockMvc.perform(get("/dottori/nuovo"))
             .andExpect(status().isOk())
-            .andExpect(view().name("dottori/dottoriForm"))
+            .andExpect(view().name("/dottoriForm"))
             .andExpect(model().attributeExists("dottore"));
     }
 
@@ -56,6 +56,6 @@ class DottoreControllerExtraTest {
                 .param("cognome","Rossi")
                 .param("repartoId","1"))
             .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrl("/dottori"));
+            .andExpect(redirectedUrl("/dottoriForm"));
     }
 }
