@@ -1,0 +1,35 @@
+name: Maven Build and SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build and analyze with SonarCloud
+        run: >
+          mvn -B clean verify
+          org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
+        env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
