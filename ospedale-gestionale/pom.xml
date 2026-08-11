@@ -28,8 +28,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<pitest.version>1.16.0</pitest.version>
 		<jacoco.version>0.8.12</jacoco.version>
-			<sonar.organization>fede587</sonar.organization>
-	</properties>
+	    <sonar.organization>fede587</sonar.organization>
+    	<sonar.projectKey>fede587_ospedale-gestionale</sonar.projectKey>
+    	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 
 	<build>
 		<pluginManagement>
