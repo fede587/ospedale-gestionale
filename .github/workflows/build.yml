@@ -28,6 +28,7 @@ jobs:
           cache: maven
 
       - name: Build and analyze with SonarCloud
+       working-directory: ./ospedale-gestionale  
         run: >
           mvn -B clean verify
           org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
