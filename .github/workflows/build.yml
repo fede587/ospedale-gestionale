@@ -26,9 +26,15 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Build and analyze with SonarCloud
+      - name: Build and test
         working-directory: ./ospedale-gestionale
-        run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
+        run: mvn -B clean verify
+
+      - name: SonarCloud analysis
+        working-directory: ./ospedale-gestionale
+        run: >
+          mvn -B
+          org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Coveralls
