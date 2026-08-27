@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+      - name: Build & Test (Jacoco)
+        run: mvn -B -DskipITs clean verify
+      - name: PIT Mutation Testing (core only)
+        run: mvn -B org.pitest:pitest-maven:mutationCoverage -pl ospedale-core
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env: { SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} }
+        with:
+          args: >
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORG }}
+            -Dsonar.java.binaries=**/target/classes
+            -Dsonar.coverage.jacoco.xmlReportPaths=**/target/site/jacoco/jacoco.xml
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./ospedale-web/target/site/jacoco/jacoco.xml
+          parallel: false
