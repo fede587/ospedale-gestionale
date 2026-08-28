@@ -37,9 +37,12 @@ jobs:
           org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./ospedale-gestionale/ospedale-web/target/site/jacoco/jacoco.xml
+          files: >-
+            ./ospedale-gestionale/ospedale-core/target/site/jacoco/jacoco.xml
+            ./ospedale-gestionale/ospedale-web/target/site/jacoco/jacoco.xml
           format: jacoco
