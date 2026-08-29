@@ -13,6 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,23 +27,9 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Build and test
-        working-directory: ./ospedale-gestionale
-        run: mvn -B clean verify
-
-      - name: SonarCloud analysis
-        working-directory: ./ospedale-gestionale
+      - name: Build and analyze with SonarCloud
         run: >
-          mvn -B
+          mvn -B clean verify
           org.sonarsource.scanner.maven:sonar-maven-plugin:5.7.0.6970:sonar
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: >-
-            ./ospedale-gestionale/ospedale-core/target/site/jacoco/jacoco.xml
-            ./ospedale-gestionale/ospedale-web/target/site/jacoco/jacoco.xml
-          format: jacoco
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
