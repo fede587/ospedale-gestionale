@@ -28,7 +28,10 @@ class CustomUserDetailsServiceTest {
         Cliente cl = mock(Cliente.class, Mockito.RETURNS_DEEP_STUBS);
         when(cl.getUsername()).thenReturn("mario");
         when(cl.getPassword()).thenReturn("ENC");
-        when(cl.getRuoli()).thenReturn(Set.of(new Ruolo("ROLE_USER"), new Ruolo("ROLE_ADMIN")));
+        when(cl.isAbilitato()).thenReturn(true);
+        when(cl.getRuoli()).thenReturn(Set.of(
+                new Ruolo("ROLE_USER"),
+                new Ruolo("ROLE_ADMIN")));
         when(clienti.findByUsername("mario")).thenReturn(Optional.of(cl));
 
         UserDetails ud = custom.loadUserByUsername("mario");
@@ -36,8 +39,10 @@ class CustomUserDetailsServiceTest {
         assertEquals("mario", ud.getUsername());
         assertEquals("ENC", ud.getPassword());
         assertTrue(ud.isEnabled());
-        assertTrue(ud.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
-        assertTrue(ud.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
+        assertTrue(ud.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
+        assertTrue(ud.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
     }
 
     @Test
@@ -46,6 +51,8 @@ class CustomUserDetailsServiceTest {
         CustomUserDetailsService custom = new CustomUserDetailsService(clienti);
         when(clienti.findByUsername("x")).thenReturn(Optional.empty());
 
-        assertThrows(UsernameNotFoundException.class, () -> custom.loadUserByUsername("x"));
+        assertThrows(
+                UsernameNotFoundException.class,
+                () -> custom.loadUserByUsername("x"));
     }
 }
