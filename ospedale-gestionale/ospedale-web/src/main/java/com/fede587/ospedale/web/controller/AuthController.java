@@ -21,7 +21,7 @@ public class AuthController {
   @GetMapping("/registrazione")
   public String registerForm(Model model){
     model.addAttribute("user", new RegForm("", "", false));
-    return "7registrazione";
+    return "registrazione";
   }
 
   @PostMapping("/registrazione")
