@@ -35,6 +35,7 @@ class AuthControllerExtraTest {
                 .build();
     }
 
+
     @Test
     void getLogin_ok() throws Exception {
         mockMvc.perform(get("/login"))
