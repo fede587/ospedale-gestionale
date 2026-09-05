@@ -33,7 +33,7 @@ public class DottoreController {
         return "/dottoriForm";
     }
 
-    @PostMapping("/dottoriForm")
+    @PostMapping("/dottori")
     public String crea(@ModelAttribute Dottore dottore,
                        @RequestParam(name = "repartoId", required = false) Long repartoId,
                        Model model,

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it"
+      th:replace="~{layout :: layout(~{::content})}">
+<body>
+<div th:fragment="content" class="container" style="max-width:480px">
+  <h2 class="h4 mb-3">Registra un nuovo utente</h2>
+  <form method="post" th:action="@{/register}" th:object="${user}">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input class="form-control" th:field="*{username}" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input class="form-control" type="password" th:field="*{password}" required>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" th:field="*{admin}" id="admin">
+      <label for="admin" class="form-check-label">Amministratore</label>
+    </div>
+    <button class="btn btn-success w-100" type="submit">Registra</button>
+  </form>
+</div>
+</body>
+</html>

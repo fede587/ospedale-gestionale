@@ -15,13 +15,35 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/login", "/registrazione", "/h2-console/**")
-				.permitAll().anyRequest().authenticated()).csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
-				.headers(h -> h.frameOptions(f -> f.sameOrigin()))
-				.formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll())
-				.logout(logout -> logout.logoutSuccessUrl("/login?logout").permitAll());
-		return http.build();
-	}
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                        "/",
+                        "/login",
+                        "/register",
+                        "/registrazione",
+                        "/h2-console/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated());
+
+        http.csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**"));
+
+        http.headers(headers -> headers
+                .frameOptions(frame -> frame.sameOrigin()));
+
+        http.formLogin(form -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/", true)
+                .permitAll());
+
+        http.logout(logout -> logout
+                .logoutSuccessUrl("/login?logout")
+                .permitAll());
+
+        return http.build();
+    }
 }
